@@ -22,4 +22,32 @@ links.forEach((link)=>{
       ease: 'elastic.out(1,0.5)',
     });
   })
+});
+
+//Cards
+const cards = document.querySelectorAll('.card');
+
+cards.forEach((card,index)=>{
+  card.addEventListener('click',()=>{
+    const state = Flip.getState(cards);
+
+    const isCardActive = card.classList.contains('active');
+    cards.forEach((otherCard, ohterIndx)=>{
+      otherCard.classList.remove('active');
+      otherCard.classList.remove('is-inactive');
+      if(!isCardActive && index !== ohterIndx){
+        otherCard.classList.add('is-inactive');
+      }
+    });
+    if(!isCardActive) card.classList.add('active');
+    
+    Flip.from(state,{
+      duration:1,
+      ease:'expo.out',
+      absolute:true,
+      onComplete:()=>{ //다른작업실행
+        //gsap.to('.card p', {y:500})
+      }
+    })
+  })
 })

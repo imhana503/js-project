@@ -43,7 +43,11 @@ nav{
 
 section {
   display:grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-gap:3rem;
+  margin:1rem 5rem
 }
+
 .card {
   height:15rem;
   border-radius: 1rem;
@@ -53,4 +57,29 @@ section {
   justify-content: center;
   align-items:center;
   background-color:#93a9ff;
+  grid-column:span 3;
+  font-size:1.2rem;
+  padding:5rem;
+  box-shadow: 0.7rem 0.7rem 0 black;
+  gap:2rem;
+}
+
+.card p {
+  line-height:2rem;
+  display:none;
+}
+
+.card.active p {
+  display:block;
+}
+
+.card.active {
+  grid-column:1 / span 6;
+  grid-row:1;
+  order:0;
+  height:auto;
+}
+
+.card.is-inactive{
+  grid-column: span 2;
 }
